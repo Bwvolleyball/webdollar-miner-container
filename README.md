@@ -1,12 +1,13 @@
 # WebDollar Node / Miner
+> This is a fork of the morion4000 webdollar-node miner. Original version is [here](https://github.com/morion4000/webdollar-node).
 
 ## Build
 
-`docker build -t morion4000/webdollar-node:1.211.5 -f Dockerfile --no-cache .`
+`docker build -t bwvolleyball/webdollar-node:1.212.0 -f Dockerfile --no-cache .`
 
 ## Deploy
 
-`docker push morion4000/webdollar-node:1.211.5`
+`docker push bwvolleyball/webdollar-node:1.212.0`
 
 # Mining
 > There are 2 ways to mine.  In both, you should provide your wallet.

@@ -5,9 +5,10 @@ COMMAND="node --max_old_space_size=10240 dist_bundle/terminal-menu-bundle.js"
 
 if [ "$WALLET" = "" ]
 then
-  (sleep 30;echo 10;sleep 5;echo $MINING_POOL_URL;) | $COMMAND || true
+  echo "Interactive mode is not supported in this container."
+  echo "You must specify a WALLET and MINING_POOL_URL!"
+  exit 7
 else
   echo $WALLET > wallet.json
-  (sleep 30;echo 4;sleep 5;echo 'wallet.json';sleep 5;echo 7;sleep 5;echo 1;sleep 5;pkill -2 node) | $COMMAND || true
-  (sleep 30;echo 10;sleep 5;echo $MINING_POOL_URL;) | $COMMAND || true
+  eval "$COMMAND -- --import-address wallet.json --list-addresses --mining-address 0 --mine-in-pool $MINING_POOL_URL"
 fi

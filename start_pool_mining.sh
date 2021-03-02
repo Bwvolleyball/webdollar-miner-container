@@ -3,7 +3,7 @@ npm run build_terminal_worker
 
 COMMAND="node --max_old_space_size=10240 dist_bundle/terminal-menu-bundle.js"
 
-if [ "$WALLET" = "" ]
+if [ -z "$WALLET" ] || [ -z "$MINING_POOL_URL" ]
 then
   echo "Interactive mode is not supported in this container."
   echo "You must specify a WALLET and MINING_POOL_URL!"

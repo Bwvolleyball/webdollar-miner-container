@@ -1,4 +1,4 @@
-# WebDollar Node / Miner
+# WebDollar Miner Container
 > This is a fork of the morion4000 webdollar-node miner. Original version is [here](https://github.com/morion4000/webdollar-node).
 >
 > This project is in full on test mode. Use at your own risk. It relies on a forked variant of the WebDollar project.
@@ -6,11 +6,11 @@
 
 ## Build
 
-`docker build -t bwvolleyball/webdollar-node:1.212.0 -f Dockerfile --no-cache .`
+`docker build -t bwvolleyball/webdollar-miner:1.212.0 -f Dockerfile --no-cache .`
 
 ## Deploy
 
-`docker push bwvolleyball/webdollar-node:1.212.0`
+`docker push bwvolleyball/webdollar-miner:1.212.0`
 
 # Mining
 > There are 2 ways to mine.  In both, you should provide your wallet.
@@ -36,5 +36,5 @@ You can find mining pool urls [from this awesome website](http://webdpools.com/p
 docker run \
 -e MINING_POOL_URL='https://webdollar.mining.pool/pool/1/POOL_NAME/version/sha/https:\$\$domain.com:443' \
 -e WALLET=$(cat ~/path/to/wallet.webd) \
-bwvolleyball/webdollar-node:1.212.0
+bwvolleyball/webdollar-miner:1.212.0
 ```

@@ -23,11 +23,13 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-ARG CACHEBUST=1
+ARG WEBDOLLAR=1
 
 RUN git clone https://github.com/WebDollar/Node-WebDollar.git miner
 
 # Build the custom argon2 package
+
+ARG ARGON=1
 
 RUN git clone https://github.com/WebDollar/argon2
 WORKDIR /usr/local/argon2

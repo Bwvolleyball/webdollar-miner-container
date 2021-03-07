@@ -6,7 +6,11 @@
 
 ## Build
 
-`docker build -t bwvolleyball/webdollar-miner:1.212.0 -f Dockerfile --no-cache .`
+Caching is per dependant repository.  You can disable caching for the critical parts of this build via `--build-arg WEBDOLLAR=$RANDOM`, or you can force all parts of the container to rebuild with `--no-cache`.
+
+Look at the github actions & `docker-build.sh` for more details.
+
+`docker build -t bwvolleyball/webdollar-miner-container:${TAG} .`
 
 ## Deploy
 

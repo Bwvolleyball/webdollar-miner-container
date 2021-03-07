@@ -25,7 +25,7 @@ ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 ARG CACHEBUST=1
 
-RUN git clone https://github.com/Bwvolleyball/Node-WebDollar.git miner
+RUN git clone https://github.com/WebDollar/Node-WebDollar.git miner
 
 # Build the custom argon2 package
 

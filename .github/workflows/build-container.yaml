@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - 'master'
-# TODO: On cron weekly?
+  schedule:
+    - cron: "0 2 * * SUN"
+
 jobs:
   docker:
     runs-on: ubuntu-latest

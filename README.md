@@ -5,6 +5,18 @@ This project is updated weekly, based on changes in the upstream project.
 
 ![Build Badge](https://github.com/bwvolleyball/webdollar-miner-container/actions/workflows/build-container.yaml/badge.svg) ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/bwvolleyball/webdollar-miner-container)
 
+If you want, you can support me in WEBD for this project!  Using the WEBD referal system, you can donate a small percentage of the WEBD you mine to me.  Your support means the world to me!  This feature is completely optional, and you can disable it at any time. 
+
+Thank you for your support!
+
+To tip, add this to your command:
+
+```
+-e ENABLE_TIPS=true
+```
+
+Alternatively, I'd also appreciate any tips sent directly to me: `WEBD$gB75To6qnTLVkKsFgrM1RA85Vr1QQNPgof$`.
+
 ## Build
 
 Caching is per dependant repository.  You can disable caching for the critical parts of this build via `--build-arg WEBDOLLAR=$RANDOM`, or you can force all parts of the container to rebuild with `--no-cache`.
@@ -42,6 +54,7 @@ It is recommended to use the latest tag. The latest tag should also be displayed
 
 ```bash
 docker run \
+-e ENABLE_TIPS=true \
 -e MINING_POOL_URL='https://webdollar.mining.pool/pool/1/POOL_NAME/version/sha/https:\$\$domain.com:443' \
 -e WALLET=$(cat ~/path/to/wallet.webd) \
 bwvolleyball/webdollar-miner-container:1.3.02

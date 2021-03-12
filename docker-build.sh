@@ -6,7 +6,9 @@ TAG=$(curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/re
 
 echo "$DOCKER_TOKEN" | docker login --username bwvolleyball --password-stdin
 
-docker build -t bwvolleyball/webdollar-miner-container:latest bwvolleyball/webdollar-miner-container:"$TAG" --build-arg WEBDOLLAR="$WEBDOLLAR_SHA" --build-arg ARGON="$ARGON_SHA" .
+# shellcheck disable=SC2086
+docker build -t bwvolleyball/webdollar-miner-container:latest -t bwvolleyball/webdollar-miner-container:$TAG --build-arg WEBDOLLAR=$WEBDOLLAR_SHA --build-arg ARGON=$ARGON_SHA .
 
 docker push bwvolleyball/webdollar-miner-container:latest
-docker push bwvolleyball/webdollar-miner-container:"$TAG"
+# shellcheck disable=SC2086
+docker push bwvolleyball/webdollar-miner-container:$TAG

@@ -22,6 +22,7 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 
 ARG WEBDOLLAR=1
 
@@ -46,9 +47,15 @@ ENV PYTHON /usr/bin/python2
 RUN . $NVM_DIR/nvm.sh \
     && (printf "n" && cat) | bash install-miner.sh && npm install
 
-ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 
+RUN npm run build_terminal_menu && npm run build_terminal_worker
+
+ARG DEVELOPMENT=1
+
+ENV SOLO_MINING=false
+
+ADD master_mining_setup.sh .
 ADD start_pool_mining.sh .
 ADD start_mining.sh .
 
-CMD [ "sh", "start_pool_mining.sh" ]
+CMD [ "./master_mining_setup.sh" ]

@@ -3,3 +3,5 @@ blockchainDB3.zip
 blockchainDB3/
 data/
 node_modules/
+.idea/
+*WEBD$*

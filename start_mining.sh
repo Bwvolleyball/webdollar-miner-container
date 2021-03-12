@@ -1,12 +1,15 @@
+#!/usr/bin/env bash
+
+echo "Solo mining initiated. Good Luck!"
+
 wget http://webd-blockchain.ddns.net:9001/blockchainDB3.tar.gz
 mkdir blockchainDB3
 tar -C blockchainDB3 -zxvf blockchainDB3.tar.gz
 unlink blockchainDB3.tar.gz
 
-npm run build_terminal_menu
-npm run build_terminal_worker
+echo "Done downloading the blockchain. Now the fun begins!"
 
-COMMAND="node --max_old_space_size=10240 dist_bundle/terminal-menu-bundle.js"
+DECRYPT_WALLET_CMD=
 
 if [ -z "$WALLET" ]
 then
@@ -14,8 +17,20 @@ then
   echo "You must specify a WALLET!"
   exit 7
 else
-  # todo: fix this command
-  echo $WALLET > wallet.json
-  (sleep 30;echo 4;sleep 5;echo 'wallet.json';sleep 5;echo 7;sleep 5;echo 1;sleep 5;pkill -2 node) | $COMMAND || true
-  (sleep 30;echo 8;) | $COMMAND || true
+  echo "$WALLET" > wallet.json
+  # Import the wallet
+  ./webd --import-address wallet.json --list-addresses --mining-address 0
+
+  if [ -n "$PASSWORD_PHRASE" ]
+  then
+    echo
+    echo "Password provided, unlocking wallet for PoS mining!"
+    echo
+
+    echo "$PASSWORD_PHRASE" > password.txt
+    DECRYPT_WALLET_CMD="--set-password-file password.txt"
+  fi
+
+  # solo mining.
+  ./webd --mine "$DECRYPT_WALLET_CMD"
 fi

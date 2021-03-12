@@ -40,12 +40,26 @@ When mining with a pool (recommended, default)
 
 ## Running the Container
 
+Available environment variables - anything with a default of `<empty>` is unset by default in the container.
+You must set it.
+
+| ENV variable | Default | Purpose | Used For? (`solo`, `pool`, `both`) |
+| ------------ | ------- | ------- | ---------------------------------- |
+| `WALLET`     | `<empty>` | Your WEBD wallet - encrypted or unencrypted | `both` |
+| `PASSWORD_PHRASE` | `<empty>` | Your WEBD wallet password phrase. Required to PoS mine if your wallet is encrypted | `both` |
+| `SOLO_MINING` | `false` | If true, mine solo. If false, mine in a pool. If you're just starting out it is recommended to min in a pool. | `N/A` - decides which process |
+| `MINING_POOL_URL` | `<empty>` | If you are mining in a pool, the pool URL you wish to join | `pool` |
+| `ENABLE_TIPS` | `<empty>` | If this project is awesome for you, and you mine in a pool, set this variable to send some love my way! :heart: | `pool` |
+
+
+
 #### Tips
 
 The `MINING_POOL_URL` should be single-quoted (`'`).
-`$` in `MINING_POOL_URL` must be escaped. `$` => `\$`.
+Earlier versions of this container required the `$` in the `MINING_POOL_URL` to be escaped (`\$`),
+however, these restrictions have been fixed! If you single tick the url, everything should work!
 
-The easist way to provide your `WALLET` is by catting out the file from your hard-drive.
+The easiest way to provide your `WALLET` and `PASSWORD_PHRASE is by catting out the files from your hard-drive.
 
 You can find mining pool urls [from this awesome website](http://webdpools.com/pool/).
 
@@ -55,7 +69,8 @@ It is recommended to use the latest tag. The latest tag should also be displayed
 ```bash
 docker run \
 -e ENABLE_TIPS=true \
--e MINING_POOL_URL='https://webdollar.mining.pool/pool/1/POOL_NAME/version/sha/https:\$\$domain.com:443' \
+-e MINING_POOL_URL='https://webdollar.mining.pool/pool/1/POOL_NAME/version/sha/https:$$domain.com:443' \
 -e WALLET=$(cat ~/path/to/wallet.webd) \
+-e PASSWORD_PHRASE=$(cat ~/path/to/password.txt) \
 bwvolleyball/webdollar-miner-container:1.3.02
 ```

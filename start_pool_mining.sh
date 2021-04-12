@@ -21,7 +21,7 @@ else
 	fi
   echo "$WALLET" > wallet.json
   # Import the wallet
-  ./webd --import-address wallet.json --list-addresses --mining-address 0
+  ./webd --import-address wallet.json --list-addresses --mining-address 1
 
   if [ -n "$PASSWORD_PHRASE" ]
   then

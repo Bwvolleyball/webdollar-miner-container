@@ -20,8 +20,12 @@ else
 		TIP_URL='/r/WEBD$gB75To6qnTLVkKsFgrM1RA85Vr1QQNPgof$'
 	fi
   echo "$WALLET" > wallet.json
+  # Print initial addresses
+  ./webd --list-addresses
+  # Allow initial WEBD project to settle.
+  sleep 2
   # Import the wallet
-  ./webd --import-address wallet.json --list-addresses --mining-address 1
+  ./webd --delete-address 0 --import-address wallet.json --list-addresses --mining-address 0
 
   if [ -n "$PASSWORD_PHRASE" ]
   then

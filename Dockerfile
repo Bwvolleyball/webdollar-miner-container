@@ -11,7 +11,7 @@ ENV HOME /usr/local
 ENV NVM_DIR /usr/local/.nvm
 ENV NODE_VERSION 8.2.1
 
-RUN apt-get update && apt-get install -y git curl wget build-essential software-properties-common clang cmake libtool autoconf psmisc opencl-headers ocl-icd-libopencl1 pciutils python2
+RUN apt-get update && apt-get install -y git curl wget build-essential software-properties-common clang cmake libtool autoconf psmisc opencl-headers ocl-icd-libopencl1 pciutils python2 jq
 
 # Install nvm with node and npm
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash \

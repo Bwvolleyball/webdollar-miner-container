@@ -40,8 +40,12 @@ else
     echo
 
     echo "$PASSWORD_PHRASE" > password.txt
-    DECRYPT_WALLET_CMD="--set-password-file password.txt"
-  fi
+    ./webd --mining-address "$POS" --set-password-file password.txt --list-addresses --mine-in-pool "$MINING_POOL_URL$TIP_URL"
+  else
+    echo
+    echo "Mining with an unprotected wallet."
+    echo
 
-   ./webd --mine-in-pool "$MINING_POOL_URL$TIP_URL" "$DECRYPT_WALLET_CMD"
+   ./webd --mining-address "$POS" --mine-in-pool "$MINING_POOL_URL$TIP_URL"
+  fi
 fi

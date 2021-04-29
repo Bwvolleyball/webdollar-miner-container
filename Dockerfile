@@ -24,10 +24,6 @@ ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 
-ARG WEBDOLLAR=1
-
-RUN git clone https://github.com/WebDollar/Node-WebDollar.git miner
-
 # Build the custom argon2 package
 
 ARG ARGON=1
@@ -38,6 +34,14 @@ RUN autoreconf -i
 RUN bash configure
 RUN cmake -DCMAKE_BUILD_TYPE=Release .
 RUN make
+
+WORKDIR /usr/local
+
+ARG WEBDOLLAR=1
+
+# TODO: Temporarily use my clone with CLI fixes.
+#RUN git clone https://github.com/WebDollar/Node-WebDollar.git miner
+RUN git clone https://github.com/bwvolleyball/Node-WebDollar.git miner
 
 WORKDIR /usr/local/miner
 RUN cp -a ../argon2/* dist_bundle/CPU/

@@ -39,9 +39,9 @@ WORKDIR /usr/local
 
 ARG WEBDOLLAR=1
 
-# TODO: Temporarily use my clone with CLI fixes.
-#RUN git clone https://github.com/WebDollar/Node-WebDollar.git miner
-RUN git clone https://github.com/bwvolleyball/Node-WebDollar.git miner
+RUN git clone https://github.com/WebDollar/Node-WebDollar.git miner
+# A backup location of the repo in case I need to test new code not in the project.
+#RUN git clone https://github.com/bwvolleyball/Node-WebDollar.git miner
 
 WORKDIR /usr/local/miner
 RUN cp -a ../argon2/* dist_bundle/CPU/

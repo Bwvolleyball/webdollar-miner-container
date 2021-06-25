@@ -3,7 +3,7 @@ name: Bulid Webdollar Miner Container
 on:
   push:
     branches:
-      - 'master'
+      - 'pos100'
   schedule:
     - cron: "0 2 * * SUN"
 

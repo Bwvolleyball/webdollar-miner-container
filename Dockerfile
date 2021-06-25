@@ -26,6 +26,7 @@ ENV NODE_TLS_REJECT_UNAUTHORIZED 0
 
 # Build the custom argon2 package
 
+## TODO: Is ARGON needed for PoS 100?
 ARG ARGON=1
 
 RUN git clone https://github.com/WebDollar/argon2
@@ -44,6 +45,7 @@ RUN git clone https://github.com/WebDollar/Node-WebDollar.git miner
 #RUN git clone https://github.com/bwvolleyball/Node-WebDollar.git miner
 
 WORKDIR /usr/local/miner
+RUN git fetch && git checkout POS100 && git pull
 RUN cp -a ../argon2/* dist_bundle/CPU/
 
 ENV PYTHON /usr/bin/python2

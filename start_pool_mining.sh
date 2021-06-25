@@ -10,15 +10,6 @@ then
   echo "You must specify a WALLET and MINING_POOL_URL!"
   exit 7
 else
-	if [ -n "$ENABLE_TIPS" ]
-	then
-		echo
-		echo "Tipping is Enabled!"
-		echo "I am truly grateful for your support!"
-		echo
-		# shellcheck disable=SC2016
-		TIP_URL='/r/WEBD$gB75To6qnTLVkKsFgrM1RA85Vr1QQNPgof$'
-	fi
   echo "$WALLET" > wallet.json
   # Import the wallet
   ./webd --import-address wallet.json
@@ -40,12 +31,12 @@ else
     echo
 
     echo "$PASSWORD_PHRASE" > password.txt
-    ./webd --mining-address "$POS" --set-password-file password.txt --list-addresses --mine-in-pool "$MINING_POOL_URL$TIP_URL"
+    ./webd --mining-address "$POS" --set-password-file password.txt --list-addresses --mine-in-pool "$MINING_POOL_URL"
   else
     echo
     echo "Mining with an unprotected wallet."
     echo
 
-   ./webd --mining-address "$POS" --mine-in-pool "$MINING_POOL_URL$TIP_URL"
+   ./webd --mining-address "$POS" --mine-in-pool "$MINING_POOL_URL"
   fi
 fi

@@ -2,7 +2,8 @@
 
 echo "Solo mining initiated. Good Luck!"
 
-wget http://webd-blockchain.ddns.net:9001/blockchainDB3.tar.gz
+#wget http://webd-blockchain.ddns.net:9001/blockchainDB3.tar.gz
+wget -O blockchainDB3.tar.gz https://mega.nz/file/awMknD5Y#yr_XdfiNTU2vQTpOD-znihyZzNiSQDmtcaDeOvQ60AA
 mkdir blockchainDB3
 tar -C blockchainDB3 -zxvf blockchainDB3.tar.gz
 unlink blockchainDB3.tar.gz

@@ -3,7 +3,12 @@
 echo "Solo mining initiated. Good Luck!"
 
 #wget http://webd-blockchain.ddns.net:9001/blockchainDB3.tar.gz
-wget -O blockchainDB3.tar.gz https://mega.nz/file/awMknD5Y#yr_XdfiNTU2vQTpOD-znihyZzNiSQDmtcaDeOvQ60AA
+fileid="1l7Uj-aqQYZuZ-pymkAuK93sUxcpZCIu2"
+filename="blockchainDB3.tar.gz"
+curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
+curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o "${filename}"
+
+#wget -O blockchainDB3.tar.gz https://mega.nz/file/awMknD5Y#yr_XdfiNTU2vQTpOD-znihyZzNiSQDmtcaDeOvQ60AA
 mkdir blockchainDB3
 tar -C blockchainDB3 -zxvf blockchainDB3.tar.gz
 unlink blockchainDB3.tar.gz

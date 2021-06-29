@@ -55,3 +55,5 @@ bwvolleyball/webdollar-miner-container:1.3.02
 
 There is an automated mechanism to maintain the WebDollar version for this container, therefore, while it is not in the mainnet
 all proof of stake containers will be suffixed with `-pos100`.  You can find a complete list of tags here: [bwvolleyball/webdollar-miner-container](https://hub.docker.com/r/bwvolleyball/webdollar-miner-container/tags?page=1&ordering=last_updated)
+
+re-pushing this branch forces a container update.

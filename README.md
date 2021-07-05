@@ -5,17 +5,9 @@ This project is updated weekly, based on changes in the upstream project.
 
 ![Build Badge](https://github.com/bwvolleyball/webdollar-miner-container/actions/workflows/build-container.yaml/badge.svg) ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/bwvolleyball/webdollar-miner-container)
 
-If you want, you can support me in WEBD for this project!  Using the WEBD referal system, you can donate a small percentage of the WEBD you mine to me.  Your support means the world to me!  This feature is completely optional, and you can disable it at any time. 
+If you want, you can support me in WEBD for this project. Any tips can be sent directly to me: `WEBD$gB75To6qnTLVkKsFgrM1RA85Vr1QQNPgof$`.
 
-Thank you for your support!
-
-To tip, add this to your command:
-
-```
--e ENABLE_TIPS=true
-```
-
-Alternatively, I'd also appreciate any tips sent directly to me: `WEBD$gB75To6qnTLVkKsFgrM1RA85Vr1QQNPgof$`.
+I'm grateful for your support!
 
 ## Build
 
@@ -49,9 +41,6 @@ You must set it.
 | `PASSWORD_PHRASE` | `<empty>` | Your WEBD wallet password phrase. Required to PoS mine if your wallet is encrypted | `both` |
 | `SOLO_MINING` | `false` | If true, mine solo. If false, mine in a pool. If you're just starting out it is recommended to min in a pool. | `N/A` - decides which process |
 | `MINING_POOL_URL` | `<empty>` | If you are mining in a pool, the pool URL you wish to join | `pool` |
-| `ENABLE_TIPS` | `<empty>` | If this project is awesome for you, and you mine in a pool, set this variable to send some love my way! :heart: | `pool` |
-
-
 
 #### Tips
 
@@ -68,7 +57,6 @@ It is recommended to use the latest tag. The latest tag should also be displayed
 
 ```bash
 docker run \
--e ENABLE_TIPS=true \
 -e MINING_POOL_URL='https://webdollar.mining.pool/pool/1/POOL_NAME/version/sha/https:$$domain.com:443' \
 -e WALLET=$(cat ~/path/to/wallet.webd) \
 -e PASSWORD_PHRASE=$(cat ~/path/to/password.txt) \

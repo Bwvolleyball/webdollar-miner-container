@@ -1,24 +1,12 @@
 #!/usr/bin/env bash
 echo "Mining in a pool initiated!"
 
-TIP_URL=
-DECRYPT_WALLET_CMD=
-
 if [ -z "$WALLET" ] || [ -z "$MINING_POOL_URL" ]
 then
   echo "Interactive mode is not supported in this container."
   echo "You must specify a WALLET and MINING_POOL_URL!"
   exit 7
 else
-	if [ -n "$ENABLE_TIPS" ]
-	then
-		echo
-		echo "Tipping is Enabled!"
-		echo "I am truly grateful for your support!"
-		echo
-		# shellcheck disable=SC2016
-		TIP_URL='/r/WEBD$gB75To6qnTLVkKsFgrM1RA85Vr1QQNPgof$'
-	fi
   echo "$WALLET" > wallet.json
   # Import the wallet
   ./webd --import-address wallet.json
@@ -40,12 +28,12 @@ else
     echo
 
     echo "$PASSWORD_PHRASE" > password.txt
-    ./webd --mining-address "$POS" --set-password-file password.txt --list-addresses --mine-in-pool "$MINING_POOL_URL$TIP_URL"
+    ./webd --mining-address "$POS" --set-password-file password.txt --list-addresses --mine-in-pool "$MINING_POOL_URL"
   else
     echo
     echo "Mining with an unprotected wallet."
     echo
 
-   ./webd --mining-address "$POS" --mine-in-pool "$MINING_POOL_URL$TIP_URL"
+   ./webd --mining-address "$POS" --mine-in-pool "$MINING_POOL_URL"
   fi
 fi
